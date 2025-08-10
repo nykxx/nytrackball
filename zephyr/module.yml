@@ -1,3 +1,4 @@
+name: nytrackball
 build:
   settings:
     board_root: .
