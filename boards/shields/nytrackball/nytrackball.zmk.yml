@@ -1,0 +1,11 @@
+file_format: "1"
+id: nytrackball
+name: NyTrackball
+type: shield
+url: https://github.com/nykxx/nytrackball
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - nytrackball_left
+  - nytrackball_right

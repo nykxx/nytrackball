@@ -1,0 +1,8 @@
+# Copyright (c) 2020 Pete Johanson
+# SPDX-License-Identifier: MIT
+
+config SHIELD_NYTRACKBALL_LEFT
+    def_bool $(shields_list_contains,nytrackball_left)
+
+config SHIELD_NYTRACKBALL_RIGHT
+    def_bool $(shields_list_contains,nytrackball_right)
