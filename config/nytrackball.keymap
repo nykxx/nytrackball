@@ -19,7 +19,7 @@
 
 
 &trackball {
-    automouse-layer = <MOUSE_>;
+    //automouse-layer = <MOUSE_>;
     scroll-layers = <SCROLL_>;
 
     // arrows {
