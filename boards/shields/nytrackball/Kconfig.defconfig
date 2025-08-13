@@ -16,8 +16,6 @@ config BT_MAX_CONN
 config BT_MAX_PAIRED
     default 5
 
-config ZMK_SPLIT
-    default y
 
 endif
 
@@ -28,6 +26,9 @@ endif
 
 if SHIELD_NYTRACKBALL_LEFT || SHIELD_NYTRACKBALL_RIGHT
 
+config ZMK_SPLIT
+    default y
+    
 if ZMK_DISPLAY
 
 config I2C
