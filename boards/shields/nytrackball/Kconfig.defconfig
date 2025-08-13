@@ -6,9 +6,12 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-endif
+config CONFIG_ZMK_SPLIT_BLE
+    default y
 
-if SHIELD_NYTRACKBALL_LEFT || SHIELD_NYTRACKBALL_RIGHT
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 1
+
 config BT_MAX_CONN
     default 5
 
@@ -16,9 +19,17 @@ config BT_MAX_CONN
 config BT_MAX_PAIRED
     default 5
 
-
 config ZMK_SPLIT
     default y
+
+endif
+
+if SHIELD_NYTRACKBALL_LEFT 
+config ZMK_SPLIT_ROLE_CENTRAL
+    default n
+endif
+
+if SHIELD_NYTRACKBALL_LEFT || SHIELD_NYTRACKBALL_RIGHT
 
 if ZMK_DISPLAY
 
