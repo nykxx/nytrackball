@@ -1,4 +1,4 @@
-if SHIELD_NYTRACKBALL_LEFT
+if SHIELD_NYTRACKBALL_RIGHT
 
 config ZMK_KEYBOARD_NAME
     default "nytrackball"
