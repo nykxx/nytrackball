@@ -98,7 +98,7 @@
         default_layer {
             // -----------------------------------------------------------------------------------------
             // |  ESC |  Q  |  L  |  U  |  ,  |  .  |   |  F  |  W   |  R  |  Y  |  P  |  /   |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  K  |  T   |  N  |  S  |  H  |  '   |
+            // | CTRL |  E  |  I  |  A  |  O  |  -  |   |  K  |  T   |  N  |  S  |  H  |  '   |
             // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  G  |  D   |  M  |  J  |  B  |  =   |
             //        | --- | SPC(NUM) | SPC(MARK) |   | ENT(MARK) | BKSP(NUM)  |
             //              | FN       | ALAT      |   | RALT      | FN         | --- |
