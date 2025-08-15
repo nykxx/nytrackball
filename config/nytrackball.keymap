@@ -51,30 +51,19 @@
 / {
     combos {
         compatible = "zmk,combos";
-        // robaのコピー持ってきてるだけ、要変更
-        tab {
+
+        combo_shift_R {
+            bindings = <&kp RSHFT>;
+            key-positions = <39 40>;
+        };
+        combo_shift_L {
+            bindings = <&kp LSHFT>;
+            key-positions = <37 38>;
+        };
+
+        combo_tab {
             bindings = <&kp TAB>;
-            key-positions = <11 12>;
-        };
-
-        shift_tab {
-            bindings = <&kp LS(TAB)>;
             key-positions = <12 13>;
-        };
-
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
-            key-positions = <11 10>;
-        };
-
-        double_quotation {
-            bindings = <&kp DOUBLE_QUOTES>;
-            key-positions = <20 21>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <24 25>;
         };
     };
 
@@ -91,14 +80,14 @@
         td_bspc: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
             bindings = <&lt FUNCS BSPC>, <&kp BSPC>;
         };
 
         td_spc: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
             bindings = <&lt FUNCS SPACE>, <&kp SPACE>;
         };
 
@@ -118,14 +107,14 @@
             // |  ESC |  Q  |  L  |  U  |  ,  |  .  |   |  F  |  W   |  R  |  Y  |  P  |  /   |
             // | CTRL |  E  |  I  |  A  |  O  |  -  |   |  K  |  T   |  N  |  S  |  H  |  '   |
             // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  G  |  D   |  M  |  J  |  B  |  =   |
-            //        | --- | SPC(NUM) | SPC(MARK) |   | ENT(MARK) | BKSP(NUM)  |
-            //              | FN       | ALAT      |   | RALT      | FN         | --- |
+            //        | SCRL| SPC(FUNK) | SPC(MARK) |   | ENT(MARK) | BKSP(NUM)  |
+            //              |  LALT     | NUMS      |   | NUMS      | RALT       | NUMS|
             bindings = <
-        &gresc     &kp Q  &kp L  &kp U     &kp COMMA  &kp PERIOD       &kp F    &kp W  &kp R     &kp Y  &kp P  &kp SLASH
-        &kp LCTRL  &kp E  &kp I  &kp A     &kp O      &kp MINUS        &kp K    &kp T  &kp N     &kp S  &kp H  &kp SQT
-        &kp LSHFT  &kp Z  &kp X  &kp C     &kp V      &kp SEMICOLON    &kp G    &kp D  &kp M     &kp J  &kp B  &kp EQUAL
-                                 &trans    &td_spc  &lt MARKS SPACE    &lt MARKS RET  &td_bspc
-                                           &kp LALT &mo NUMS           &mo NUMS       &kp RALT  &trans
+        &gresc     &kp Q  &kp L  &kp U        &kp COMMA  &kp PERIOD       &kp F    &kp W  &kp R     &kp Y  &kp P  &kp SLASH
+        &kp LCTRL  &kp E  &kp I  &kp A        &kp O      &kp MINUS        &kp K    &kp T  &kp N     &kp S  &kp H  &kp SQT
+        &kp LSHFT  &kp Z  &kp X  &kp C        &kp V      &kp SEMICOLON    &kp G    &kp D  &kp M     &kp J  &kp B  &kp EQUAL
+                                 &to SCROLL_  &td_spc  &lt MARKS SPACE    &lt MARKS RET  &td_bspc
+                                              &kp LALT &mo NUMS           &mo NUMS       &kp RALT   &mo NUMS
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
@@ -133,17 +122,17 @@
         MARK {
             // -----------------------------------------------------------------------------------------
             // |  ~   |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (        | )   | ?  |
-            // | TAB  |     |  {  |  }  |  <  | >   |   | LFT | LFT | DWN |  UP       | RGT |  " |
-            // |      |     |  [  |  ]  |  (  | )   |   |  `  |  ~  |  ¥  |  Lsft(¥)  |     |  + |
+            // | TAB  |  -  |  {  |  }  |  <  | >   |   | LFT | LFT | DWN |  UP       | RGT |  " |
+            // |      |  _  |  [  |  ]  |  (  | )   |   |  `  |  ~  |  ¥  |  Lsft(¥)  |     |  + |
             //                    | --- |---- | ----|   | ---- | DELETE  |
             //                          |---- | ----|   | ---- |  -----  | ---- |
 
             bindings = <
-        &kp GRAVE   &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp LS(N4)      &kp LS(N5)          &kp LS(N6)    &kp LS(N7)  &kp LS(N8)   &kp LS(N9)   &kp LS(N0)   &kp LS(SLASH)
-        &kp TAB     &trans      &kp LBKT    &kp RBKT    &kp LS(COMMA)   &kp LS(PERIOD)      &kp LEFT      &kp LEFT    &kp DOWN     &kp UP       &kp RIGHT    &kp LS(SQT)
-        &kp LSHFT   &trans      &kp LBRC    &kp RBRC    &kp LS(N9)      &kp LS(N0)          &kp LS(GRAVE) &kp GRAVE   &kp NUBS     &kp LS(NUBS) &trans       &kp LS(EQUAL)
-                                            &trans      &trans          &trans              &trans        &kp DELETE    
-                                                        &trans          &trans              &trans        &trans      &trans
+        &kp GRAVE   &kp LS(N1)    &kp LS(N2)  &kp LS(N3)  &kp LS(N4)      &kp LS(N5)          &kp LS(N6)    &kp LS(N7)  &kp LS(N8)   &kp LS(N9)   &kp LS(N0)   &kp LS(SLASH)
+        &kp TAB     &kp MINUS     &kp LBKT    &kp RBKT    &kp LS(COMMA)   &kp LS(PERIOD)      &kp LEFT      &kp LEFT    &kp DOWN     &kp UP       &kp RIGHT    &kp LS(SQT)
+        &kp LSHFT   &kp LS(MINUS) &kp LBRC    &kp RBRC    &kp LS(N9)      &kp LS(N0)          &kp LS(GRAVE) &kp GRAVE   &kp NUBS     &kp LS(NUBS) &trans       &kp LS(EQUAL)
+                                              &trans      &trans          &trans              &trans        &kp DELETE    
+                                                          &trans          &trans              &trans        &trans      &trans
                 >;
                 sensor-bindings = <&inc_dec_kp DOWN UP>;
         };
@@ -151,14 +140,14 @@
         NUM {
             // -----------------------------------------------------------------------------------------
             // |  NUM |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |  =   |
-            // | CAPS | --- | --- | --- |  (  |  )  |   |  +  |  4  |  5  |  6  |  *  |  ,   |
-            // | Save | Undo| Cut | Copy|Paste| --- |   |  _  |  1  |  2  |  3  |  /  |  .   |
+            // | ---- | --- | --- | --- |  (  |  )  |   |  +  |  4  |  5  |  6  |  *  |  ,   |
+            // | Save | Undo| Cut | Copy|Paste|Paste|   |  -  |  1  |  2  |  3  |  /  |  .   |
             //                    | --- |---- | ----|   | --- | --- |
             //                          |---- | ----|   | --- | --- | --- |
 
             bindings = <
-        &kp LNLCK  &kp  KP_N1   &kp KP_N2   &kp KP_N3  &kp KP_N4   &kp KP_N5     &kp KP_N6  &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp KP_N0       &kp EQUAL
-        &kp CAPS   &trans       &trans      &trans     &kp KP_LPAR &kp KP_RPAR   &kp PLUS   &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_ASTERISK &kp COMMA
+        &kp NUM    &kp  KP_N1   &kp KP_N2   &kp KP_N3  &kp KP_N4   &kp KP_N5     &kp KP_N6  &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp KP_N0       &kp EQUAL
+        &trans     &trans       &trans      &trans     &kp KP_LPAR &kp KP_RPAR   &kp PLUS   &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_ASTERISK &kp COMMA
         &kp LC(S)  &kp LC(Z)    &kp LC(X)   &kp LC(C)  &kp LC(V)   &trans        &kp MINUS  &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp KP_SLASH    &kp KP_DOT
                                             &trans     &trans      &trans        &trans     &trans  
                                                        &trans      &trans        &trans     &trans  &trans
@@ -168,16 +157,16 @@
 
         FUNC {     
             // -----------------------------------------------------------------------------------------
-            // | ESC   | F1   |  F2  |  F3  |  F4   |  F5  |     |  F6 |  F7 |  F8 |  F9 | F10  | F11  |
-            // | LCTRL | ---  | ---- | ---- | ----- | ---- |     | LFT | DWN |  UP | RGT | ---- | F12  |
-            // | SAVE  | UNDO | CUT  | COPY | PASTE | PASTE|     | --- | --- | ----| ----| ---- | ---- |
-            //                       | ---- | ----- | ----- |    | -------- | ----  | 
-            //                              | ----- |Mo(BOOT)|   | Mo(BOOT) | ----- | ----- |
+            // | ESC   | F1   |  F2  |  F3  |  F4   |  F5   |     |  F6 |  F7 |  F8 |  F9 | F10  | F11        |
+            // | CAPS  | ---  | ---- | ---- | ----- | ----  |     | LEFT| LEFT| DOWN| UP  |RIGHT | F12        |
+            // | SAVE  | UNDO | CUT  | COPY | PASTE | PASTE |     | HOME| PGUP| PGDN| END | ---- | PrintScreen|
+            //                       | ---- | ----- | ----- |     | -------- | ----  | 
+            //                              | ----- |Mo(BOOT)|    | Mo(BOOT) | ----- | ----- |
             bindings = <
-        &kp ESC   &kp F1     &kp F2    &kp F3    &kp F4    &kp F5      &kp F6     &kp F7     &kp F8    &kp F9   &kp F10    &kp F11
-        &kp LCTRL &trans     &trans    &trans    &trans    &trans      &kp LEFT   &kp LEFT   &kp DOWN   &kp UP  &kp RIGHT  &kp F12
-        &kp LC(S) &kp LC(Z)  &kp LC(X) &kp LC(C) &kp LC(V) &trans      &kp PG_UP  &kp PG_DN  &kp HOME  &kp END  &trans     &kp LS(LG(S))
-                                       &trans    &trans    &trans      &trans     &trans
+        &kp ESC   &kp F1     &kp F2    &kp F3    &kp F4    &kp F5      &kp F6     &kp F7     &kp F8     &kp F9   &kp F10    &kp F11
+        &kp CAPS  &trans     &trans    &trans    &trans    &trans      &kp LEFT   &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT  &kp F12
+        &kp LC(S) &kp LC(Z)  &kp LC(X) &kp LC(C) &kp LC(V) &LSG(V)     &kp HOME   &kp PG_UP  &kp PG_DN  &kp END  &trans     &kp LS(LG(S))
+                                       &trans    &trans    &LGUI       &trans     &trans
                                                  &trans    &mo EXTRA   &mo EXTRA   &trans    &trans
             >;
             sensor-bindings = <&scroll_up_down>;
@@ -192,10 +181,10 @@
             //                         | --- | --- |   | --- | --- | --- |
             bindings = <
         &trans  &trans  &trans  &trans  &trans  &trans     &trans    &trans    &trans    &trans    &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB5  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB4    &trans    &trans    &trans    &trans  &trans
+        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB5  &mkp LCLK &mkp MCLK &mkp RCLK &trans  &trans
+        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB4  &trans   &trans     &trans    &trans  &trans
                                 &trans  &trans  &trans     &trans    &trans 
-                                        &trans  &trans     &mkp MB1  &mkp MB3  &mkp MB2
+                                        &trans  &trans     &mkp LCLK &mkp MCLK &mkp RCLK
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
@@ -205,31 +194,31 @@
             // | --- | --- | --- | --- | --- | --- |   | --- | --- | --- | --- | --- | --- |
             // | --- | --- | --- | --- | --- | --- |   | --- | --- | --- | --- | --- | --- |
             // | --- | --- | --- | --- | --- | --- |   | --- | --- | --- | --- | --- | --- |
-            //                   | --- | --- | --- |   | --- | --- |
+            //                  |TO DEF| --- | --- |   | --- | --- |
             //                         | --- | --- |   | --- | --- | --- |
             bindings = <
-        &trans  &trans  &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans     &trans  &trans 
-                                        &trans  &trans     &trans  &trans  &trans
+        &trans  &trans  &trans  &trans       &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans       &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans       &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
+                                &to DEFAULT  &trans  &trans     &trans  &trans 
+                                             &trans  &trans     &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
 
         EX {     
             // -----------------------------------------------------------------------------------------
-            // | BOOT  |     |      |      |      |     |   |     |     |     |     |     |      |
-            // | BTCLR | BT1 | BT2  | BT3  | BT4  | BT5 |   |     |     |     |     |     |      |
-            // |       |     |      |      |      |     |   |     |     |     |     |     |      |
-            //                             |      |     |   |     |     | 
-            //                             |      |     |   |     |     |
+            // | BOOT |    |     |     |       |     |      |     |     |     |     |     | BOOT |
+            // |      |    |     |     |       |     |      |BTCLR| BT0 | BT1 | BT2 | BT3 | BT4  |
+            // |      |    |     |     |       |     |      |     |     |     |     |     |      |
+            //                   |     |       |     |      |     |     | 
+            //                         |       |     |      |     |     |
             bindings = <
-        &bootloader &none         &none         &none         &none         &none                 &none  &none  &none &none &none  &bootloader
-        &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4          &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-        &none       &none         &none         &none         &none         &none                 &none  &none  &none &none &none  &none
-                                                              &none         &none                 &none  &none
-                                                              &none         &none                 &none  &none
+        &bootloader &none  &none  &none  &none  &none        &none       &none         &none         &none         &none         &bootloader
+        &none       &none  &none  &none  &none  &none        &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+        &none       &none  &none  &none  &none  &none        &none       &none         &none         &none         &none         &none
+                                  &none  &none  &none        &none       &none
+                                         &none  &none        &none       &none         &none
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
