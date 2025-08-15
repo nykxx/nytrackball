@@ -26,7 +26,22 @@
         status = "okay";
         compatible = "zmk,input-listener";
         device = <&trackball>;
+        input-processors = <&zip_temp_layer 4 10000>;
     };
+};
+
+&zip_temp_layer {
+    excluded-positions = <
+        18 // K(Next)
+        19 // T(左クリック)
+        20 // N(右クリック)
+        21 // S(中クリック)  
+        30 // G(Prev)
+        24 // Shift
+        43 // Left Click
+        44 // Mid Click
+        45 // Right Click
+    >;
 };
 
 &pinctrl {
