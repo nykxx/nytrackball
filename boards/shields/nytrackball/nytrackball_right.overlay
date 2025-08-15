@@ -34,9 +34,9 @@
 &zip_temp_layer {
     excluded-positions = <
         18 // K(Next)
-        19 // T(左クリック)
-        20 // N(右クリック)
-        21 // S(中クリック)  
+        31 // T(左クリック)
+        32 // N(右クリック)
+        33 // S(中クリック)  
         30 // G(Prev)
         24 // Shift
         43 // Left Click
