@@ -108,13 +108,13 @@
             // | CTRL |  E  |  I  |  A  |  O  |  -  |   |  K  |  T   |  N  |  S  |  H  |  '   |
             // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  G  |  D   |  M  |  J  |  B  |  =   |
             //        | SCRL| SPC(FUNK) | SPC(MARK) |   | ENT(MARK) | BKSP(NUM)  |
-            //              |  LALT     | NUMS      |   | NUMS      | RALT       | NUMS|
+            //              |  LALT     | NUMS      |   | GUI       | RALT       | NUMS|
             bindings = <
         &gresc     &kp Q  &kp L  &kp U        &kp COMMA  &kp PERIOD       &kp F    &kp W  &kp R     &kp Y  &kp P  &kp SLASH
         &kp LCTRL  &kp E  &kp I  &kp A        &kp O      &kp MINUS        &kp K    &kp T  &kp N     &kp S  &kp H  &kp SQT
         &kp LSHFT  &kp Z  &kp X  &kp C        &kp V      &kp SEMICOLON    &kp G    &kp D  &kp M     &kp J  &kp B  &kp EQUAL
                                  &to SCROLL_  &td_spc  &lt MARKS SPACE    &lt MARKS RET  &td_bspc
-                                              &kp LALT &mo NUMS           &mo NUMS       &kp RALT   &mo NUMS
+                                              &kp LALT &mo NUMS           &kp LGUI       &kp RALT   &mo NUMS
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
@@ -180,9 +180,9 @@
             //                   | --- | --- | --- |   | --- | --- |
             //                         | --- | --- |   | --- | --- | --- |
             bindings = <
-        &trans  &trans  &trans  &trans  &trans  &trans     &trans    &trans    &trans    &trans     &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB5  &trans    &trans    &trans     &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB4  &mkp LCLK &mkp MCLK &mkp RCLK  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB5  &trans    &trans    &trans   &trans  &trans
+        &trans  &trans  &trans  &trans  &trans  &trans     &mkp MB4  &trans    &trans    &trans   &trans  &trans
+        &trans  &trans  &trans  &trans  &trans  &trans     &mkp LCLK &mkp MCLK &mkp RCLK &trans   &trans  &trans
                                 &trans  &trans  &trans     &trans    &trans 
                                         &trans  &trans     &mkp LCLK &mkp MCLK &mkp RCLK
             >;
