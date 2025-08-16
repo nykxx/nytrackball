@@ -31,13 +31,14 @@
     };
 };
 
+// ここに指定したキーではAMLから抜けなくなる
 &zip_temp_layer {
     excluded-positions = <
-        18 // K(Next)
-        31 // T(左クリック)
-        32 // N(右クリック)
-        33 // S(中クリック)  
-        30 // G(Prev)
+        6  // F(Next)
+        18 // K(Prev)
+        30 // G(左クリック)
+        31 // D(右クリック)
+        32 // M(中クリック)  
         24 // Shift
         43 // Left Click
         44 // Mid Click
